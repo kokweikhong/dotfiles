@@ -7,13 +7,22 @@ return {
         lua = {
           require("formatter.filetypes.lua").stylua,
         },
-        javascript = {
-          require("formatter.filetypes.javascript").prettier,
-        },
         html = {
           require("formatter.filetypes.html").prettier,
         },
+        css = {
+          require("formatter.filetypes.css").prettier,
+        },
+        javascript = {
+          require("formatter.filetypes.javascript").prettier,
+        },
+        javascriptreact = {
+          require("formatter.filetypes.javascript").prettier,
+        },
         typescript = {
+          require("formatter.filetypes.typescript").prettier,
+        },
+        typescriptreact = {
           require("formatter.filetypes.typescript").prettier,
         },
         go = {
@@ -25,7 +34,7 @@ return {
       },
     })
 
-    vim.api.nvim_set_keymap("n", "<leader>fm", "<cmd>Format<cr>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap("n", "<leader>f", "<cmd>Format<cr>", { noremap = true, silent = true })
     vim.api.nvim_set_keymap("n", "<leader>Fm", "<cmd>FormatWrite<cr>", { noremap = true, silent = true })
 
     -- vim.api.nvim_create_autocmd({ "BufWritePost" }, {

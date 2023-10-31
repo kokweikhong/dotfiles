@@ -54,17 +54,17 @@ if [[ ! -z $location ]]; then
 fi
 
 # check whether dst is exist or not
-if [[ ! -d $dst ]]; then
-    echo "Directory $dst does not exist"
-    # ask whether want to create dst or not
-    read -p "Do you want to create $dst? (y/n) " answer
-    # if yes, then create dst with sudo
-    if [[ $answer == y || $answer == Y ]]; then
-        sudo mkdir -p $dst
-    else
-        exit
-    fi
-fi
+# if [[ ! -d $dst ]]; then
+#     echo "Directory $dst does not exist"
+#     # ask whether want to create dst or not
+#     read -p "Do you want to create $dst? (y/n) " answer
+#     # if yes, then create dst with sudo
+#     if [[ $answer == y || $answer == Y ]]; then
+#         sudo mkdir -p $dst
+#     else
+#         exit
+#     fi
+# fi
 
 # ln config
 case $selection in
