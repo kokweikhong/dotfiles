@@ -13,7 +13,8 @@ return {
     -- })
     -- vim.cmd.colorscheme 'tokyonight'
     -- vim.cmd.colorscheme "onedark"
-    vim.cmd.colorscheme "catppuccin-frappe"
+    --catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
+    vim.cmd.colorscheme "catppuccin-macchiato"
     -- require('onedark').setup {
     --   style = 'darker',
     --   transparent = true
