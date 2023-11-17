@@ -147,7 +147,7 @@ if vim.g.vscode then
     { noremap = true, silent = true })
   vim.api.nvim_set_keymap('n', '<C-w>_ ', ":call VSCodeNotify('workbench.action.toggleEditorWidths')<CR>",
     { noremap = true, silent = true })
-  vim.api.nvim_set_keymap('n', '<Space>', ":call VSCodeNotify('whichkey.show')<CR>", { noremap = true, silent = true })
+  vim.api.nvim_set_keymap('n', '<Space>;', ":call VSCodeNotify('whichkey.show')<CR>", { noremap = true, silent = true })
 
   -- lua config for vscode for xnoremap mode
   vim.api.nvim_set_keymap('x', '<C-j>', ":call VSCodeNotify('workbench.action.navigateDown')<CR>",
@@ -160,49 +160,16 @@ if vim.g.vscode then
     { noremap = true, silent = true })
   vim.api.nvim_set_keymap('x', '<C-w>_ ', ":call VSCodeNotify('workbench.action.toggleEditorWidths')<CR>",
     { noremap = true, silent = true })
-  vim.api.nvim_set_keymap('x', '<Space>', ":call VSCodeNotify('whichkey.show')<CR>", { noremap = true, silent = true })
+  vim.api.nvim_set_keymap('x', '<Space>;', ":call VSCodeNotify('whichkey.show')<CR>", { noremap = true, silent = true })
 else
-  -- vim.opt.showmode = true
-  -- vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
+
   vim.o.guicursor = table.concat({
-    -- "n-v-c:block-Cursor/lCursor-blinkwait1000-blinkon100-blinkoff100",
-    -- "i-ci:block-Cursor/lCursor-blinkwait10k00-blinkon100-blinkoff100",
     "i-ci:ver30-block-Cursor/lCursor-blinkwait700-blinkoff400-blinkon250",
-    -- "i-ci:ver25-Cursor/lCursor-blinkwait10:w00",
-    -- "r:hor50-Cursor/lCursor-blinkwait100-blinkon100-blinkoff100"
   }, ",")
 
   -- vim.opt.foldmethod = "expr"
   -- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
   -- vim.opt.foldlevel = 99
-  --
-  --
-  -- local vim = vim
-  -- local api = vim.api
-  -- local M = {}
-  -- -- function to create a list of commands and convert them to autocommands
-  -- -------- This function is taken from https://github.com/norcalli/nvim_utils
-  -- function M.nvim_create_augroups(definitions)
-  --     for group_name, definition in pairs(definitions) do
-  --         api.nvim_command('augroup '..group_name)
-  --         api.nvim_command('autocmd!')
-  --         for _, def in ipairs(definition) do
-  --             local command = table.concat(vim.tbl_flatten{'autocmd', def}, ' ')
-  --             api.nvim_command(command)
-  --         end
-  --         api.nvim_command('augroup END')
-  --     end
-  -- end
-
-
-  -- local autoCommands = {
-  --     -- other autocommands
-  --     open_folds = {
-  --         {"BufReadPost,FileReadPost", "*", "normal zR"}
-  --     }
-  -- }
-
-  -- M.nvim_create_augroups(autoCommands)
 
   vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     pattern = { "*" },
@@ -214,9 +181,6 @@ else
     pattern = { "*" },
     command = "set fo-=c fo-=r fo-=o"
   })
-
-  -- don't auto commenting new lines
-  -- vim.cmd [[au BufEnter * set fo-=c fo-=r fo-=o]]
 
   -- remove line lenght marker for selected filetypes
   vim.cmd [[autocmd FileType text,markdown,html,xhtml,javascript setlocal cc=0]]
