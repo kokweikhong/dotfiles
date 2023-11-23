@@ -7,18 +7,20 @@ return {
     -- Automatically install LSPs to stdpath for neovim
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
-    'hrsh7th/nvim-cmp',       -- Autocompletion plugin
-    'hrsh7th/cmp-nvim-lsp',   -- LSP source for nvim-cmp
+    'hrsh7th/nvim-cmp',         -- Autocompletion plugin
+    'hrsh7th/cmp-nvim-lsp',     -- LSP source for nvim-cmp
     'saadparwaiz1/cmp_luasnip', -- Snippets source for nvim-cmp
     'L3MON4D3/LuaSnip',
+    -- "WhoIsSethDaniel/mason-tool-installer.nvim",
   },
   config = function()
     require("mason").setup()
 
-
     require("mason-lspconfig").setup({
       ensure_installed = servers
     })
+
+
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
     local lspconfig = require('lspconfig')
@@ -86,7 +88,7 @@ return {
       },
       mapping = cmp.mapping.preset.insert({
         ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
-        ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
+        ['<C-d>'] = cmp.mapping.scroll_docs(4),  -- Down
         -- C-b (back) C-f (forward) for snippet placeholder navigation.
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<CR>'] = cmp.mapping.confirm {
