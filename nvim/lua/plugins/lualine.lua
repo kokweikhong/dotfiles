@@ -2,7 +2,14 @@ return {
   'nvim-lualine/lualine.nvim',
   config = function()
     require("lualine").setup({
+      options = {
+        icons_enabled = false,
+      },
       sections = {
+        -- lualine_a = {
+        --   mode = 'diagnostics',
+        --   symbols = { error = ' ', warn = ' ', info = ' ' },
+        -- },
         lualine_c = { 'vim.fn.expand("%p")' },
         lualine_x = {
           'encoding',
