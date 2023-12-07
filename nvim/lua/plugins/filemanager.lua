@@ -10,6 +10,9 @@ return {
   },
   config = function()
     require("neo-tree").setup({
+      window = {
+        position = "float",
+      },
       default_component_configs = {
         icon = {
           folder_closed = "+",
