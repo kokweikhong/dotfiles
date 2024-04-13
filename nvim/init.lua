@@ -20,12 +20,12 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- Enable mouse mode
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.opt.clipboard = 'unnamedplus'
+vim.opt.clipboard = "unnamedplus"
 
 -- Enable break indent
 vim.opt.breakindent = true
@@ -38,7 +38,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Keep signcolumn on by default
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = "yes"
 
 -- Decrease update time
 vim.opt.updatetime = 50
@@ -46,15 +46,15 @@ vim.opt.timeout = true
 vim.opt.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
-vim.opt.completeopt = 'menuone,noselect'
+vim.opt.completeopt = "menuone,noselect"
 
 -- NOTE: You should make sure your terminal supports this
 vim.opt.termguicolors = true
 
-vim.cmd('filetype plugin indent on')
-vim.o.shortmess = vim.o.shortmess .. 'c'
+vim.cmd("filetype plugin indent on")
+vim.o.shortmess = vim.o.shortmess .. "c"
 -- vim.opt.hidden = true
-vim.opt.whichwrap = 'b,s,<,>,[,],h,l'
+vim.opt.whichwrap = "b,s,<,>,[,],h,l"
 vim.opt.pumheight = 10
 vim.opt.fileencoding = "utf-8"
 vim.opt.cmdheight = 2
@@ -91,13 +91,11 @@ vim.bo.autoindent = true
 vim.opt.expandtab = true
 vim.bo.expandtab = true
 
-
 vim.api.nvim_exec([[let &t_ut='']], true)
 
-vim.cmd [[
+vim.cmd([[
   tnoremap <silent> <ESC> <C-\><C-n>
-]]
-
+]])
 
 -- Disable builtins plugins
 local disabled_built_ins = {
@@ -118,7 +116,7 @@ local disabled_built_ins = {
   "logipat",
   "rrhelper",
   "spellfile_plugin",
-  "matchit"
+  "matchit",
 }
 
 vim.api.nvim_set_option_value("colorcolumn", "79", {})
@@ -132,37 +130,75 @@ vim.opt.fillchars:append({ fold = " " })
 vim.opt.foldmethod = "indent"
 vim.opt.foldenable = false
 vim.opt.foldlevel = 99
-vim.g.markdown_folding = 1   -- enable markdown folding
-
+vim.g.markdown_folding = 1 -- enable markdown folding
 
 if vim.g.vscode then
   -- lua config for vscode for nnoremap mode
-  vim.api.nvim_set_keymap('n', '<C-j>', ":call VSCodeNotify('workbench.action.navigateDown')<CR>",
-    { noremap = true, silent = true })
-  vim.api.nvim_set_keymap('n', '<C-k>', ":call VSCodeNotify('workbench.action.navigateUp')<CR>",
-    { noremap = true, silent = true })
-  vim.api.nvim_set_keymap('n', '<C-h>', ":call VSCodeNotify('workbench.action.navigateLeft')<CR>",
-    { noremap = true, silent = true })
-  vim.api.nvim_set_keymap('n', '<C-l>', ":call VSCodeNotify('workbench.action.navigateRight')<CR>",
-    { noremap = true, silent = true })
-  vim.api.nvim_set_keymap('n', '<C-w>_ ', ":call VSCodeNotify('workbench.action.toggleEditorWidths')<CR>",
-    { noremap = true, silent = true })
-  vim.api.nvim_set_keymap('n', '<Space>;', ":call VSCodeNotify('whichkey.show')<CR>", { noremap = true, silent = true })
+  vim.api.nvim_set_keymap(
+    "n",
+    "<C-j>",
+    ":call VSCodeNotify('workbench.action.navigateDown')<CR>",
+    { noremap = true, silent = true }
+  )
+  vim.api.nvim_set_keymap(
+    "n",
+    "<C-k>",
+    ":call VSCodeNotify('workbench.action.navigateUp')<CR>",
+    { noremap = true, silent = true }
+  )
+  vim.api.nvim_set_keymap(
+    "n",
+    "<C-h>",
+    ":call VSCodeNotify('workbench.action.navigateLeft')<CR>",
+    { noremap = true, silent = true }
+  )
+  vim.api.nvim_set_keymap(
+    "n",
+    "<C-l>",
+    ":call VSCodeNotify('workbench.action.navigateRight')<CR>",
+    { noremap = true, silent = true }
+  )
+  vim.api.nvim_set_keymap(
+    "n",
+    "<C-w>_ ",
+    ":call VSCodeNotify('workbench.action.toggleEditorWidths')<CR>",
+    { noremap = true, silent = true }
+  )
+  vim.api.nvim_set_keymap("n", "<Space>;", ":call VSCodeNotify('whichkey.show')<CR>", { noremap = true, silent = true })
 
   -- lua config for vscode for xnoremap mode
-  vim.api.nvim_set_keymap('x', '<C-j>', ":call VSCodeNotify('workbench.action.navigateDown')<CR>",
-    { noremap = true, silent = true })
-  vim.api.nvim_set_keymap('x', '<C-k>', ":call VSCodeNotify('workbench.action.navigateUp')<CR>",
-    { noremap = true, silent = true })
-  vim.api.nvim_set_keymap('x', '<C-h>', ":call VSCodeNotify('workbench.action.navigateLeft')<CR>",
-    { noremap = true, silent = true })
-  vim.api.nvim_set_keymap('x', '<C-l>', ":call VSCodeNotify('workbench.action.navigateRight')<CR>",
-    { noremap = true, silent = true })
-  vim.api.nvim_set_keymap('x', '<C-w>_ ', ":call VSCodeNotify('workbench.action.toggleEditorWidths')<CR>",
-    { noremap = true, silent = true })
-  vim.api.nvim_set_keymap('x', '<Space>;', ":call VSCodeNotify('whichkey.show')<CR>", { noremap = true, silent = true })
+  vim.api.nvim_set_keymap(
+    "x",
+    "<C-j>",
+    ":call VSCodeNotify('workbench.action.navigateDown')<CR>",
+    { noremap = true, silent = true }
+  )
+  vim.api.nvim_set_keymap(
+    "x",
+    "<C-k>",
+    ":call VSCodeNotify('workbench.action.navigateUp')<CR>",
+    { noremap = true, silent = true }
+  )
+  vim.api.nvim_set_keymap(
+    "x",
+    "<C-h>",
+    ":call VSCodeNotify('workbench.action.navigateLeft')<CR>",
+    { noremap = true, silent = true }
+  )
+  vim.api.nvim_set_keymap(
+    "x",
+    "<C-l>",
+    ":call VSCodeNotify('workbench.action.navigateRight')<CR>",
+    { noremap = true, silent = true }
+  )
+  vim.api.nvim_set_keymap(
+    "x",
+    "<C-w>_ ",
+    ":call VSCodeNotify('workbench.action.toggleEditorWidths')<CR>",
+    { noremap = true, silent = true }
+  )
+  vim.api.nvim_set_keymap("x", "<Space>;", ":call VSCodeNotify('whichkey.show')<CR>", { noremap = true, silent = true })
 else
-
   vim.o.guicursor = table.concat({
     "i-ci:ver30-block-Cursor/lCursor-blinkwait700-blinkoff400-blinkon250",
   }, ",")
@@ -176,60 +212,61 @@ else
     command = [[%s/\s\+$//e]],
   })
 
-
   vim.api.nvim_create_autocmd({ "BufEnter" }, {
     pattern = { "*" },
-    command = "set fo-=c fo-=r fo-=o"
+    command = "set fo-=c fo-=r fo-=o",
   })
 
   -- remove line lenght marker for selected filetypes
-  vim.cmd [[autocmd FileType text,markdown,html,xhtml,javascript setlocal cc=0]]
+  vim.cmd([[autocmd FileType text,markdown,html,xhtml,javascript setlocal cc=0]])
 
   -- 2 spaces for selected filetypes
-  vim.cmd [[
+  vim.cmd([[
   autocmd FileType xml,html,xhtml,css,scss,javascript,javascriptreact,lua,yaml setlocal shiftwidth=2 tabstop=2
-]]
+]])
 
   -----------------------------------------------------------
   -- Terminal
   -----------------------------------------------------------
   -- open a terminal pane on the right using :Term
-  vim.cmd [[command Term :split term]]
+  vim.cmd([[command Term :split term]])
 
   -- Terminal visual tweaks
   --- enter insert mode when switching to terminal
   --- close terminal buffer on process exit
-  vim.cmd [[
+  vim.cmd([[
   autocmd TermOpen * setlocal listchars= nonumber norelativenumber nocursorline
   autocmd TermOpen * startinsert
   autocmd BufLeave term://* stopinsert
-]]
+]])
   -- autocmd BufWinLeave * mkview
   -- autocmd BufWinEnter * silent! loadview
   -- autocmd BufWinLeave,BufLeave,BufWritePost,BufHidden,QuitPre ?* nested silent! mkview!
   -- autocmd BufWinEnter ?* silent! loadviewutocmd!
   -- require("statusline")
 
-  vim.cmd [[
+  vim.cmd([[
   autocmd!
   au BufWinLeave ?* mkview 1
   au BufWinEnter ?* silent! loadview 1roup remember_folds
   augroup END
-]]
+]])
+
+  require("lua.settings.remap")
 
   -- Install package manager
   --    https://github.com/folke/lazy.nvim
   --    `:help lazy.nvim.txt` for more info
-  local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+  local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
   if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system {
-      'git',
-      'clone',
-      '--filter=blob:none',
-      'https://github.com/folke/lazy.nvim.git',
-      '--branch=stable', -- latest stable release
+    vim.fn.system({
+      "git",
+      "clone",
+      "--filter=blob:none",
+      "https://github.com/folke/lazy.nvim.git",
+      "--branch=stable", -- latest stable release
       lazypath,
-    }
+    })
   end
   vim.opt.rtp:prepend(lazypath)
 

@@ -1,44 +1,35 @@
 return {
-  "mhartington/formatter.nvim",
-  event = "VeryLazy",
+  "stevearc/conform.nvim",
+  event = { "BufReadPre", "BufNewFile" },
   config = function()
-    require("formatter").setup({
-      filetype = {
-        lua = {
-          require("formatter.filetypes.lua").stylua,
-        },
-        html = {
-          require("formatter.filetypes.html").prettier,
-        },
-        css = {
-          require("formatter.filetypes.css").prettier,
-        },
-        javascript = {
-          require("formatter.filetypes.javascript").prettier,
-        },
-        javascriptreact = {
-          require("formatter.filetypes.javascript").prettier,
-        },
-        typescript = {
-          require("formatter.filetypes.typescript").prettier,
-        },
-        typescriptreact = {
-          require("formatter.filetypes.typescript").prettier,
-        },
-        go = {
-          require("formatter.filetypes.go").goimports,
-        },
-        ["*"] = {
-          require("formatter.filetypes.any").remove_trailing_whitespace,
-        },
+    require("conform").setup({
+      formatters_by_ft = {
+        lua = { "stylua" },
+        go = { "goimports" },
+        python = { "isort", "black" },
+        javascript = { "prettier", "eslint_d" },
+        typescript = { "prettier", "eslint_d" },
+        typescriptreact = { "prettier", "eslint_d" },
+        javascriptreact = { "prettier", "eslint_d" },
+        html = { "prettier" },
+        css = { "prettier" },
+        scss = { "prettier" },
+        json = { "prettier" },
+        yaml = { "prettier" },
+        markdown = { "prettier" },
+      },
+      format_on_save = {
+        lsp_fallback = true,
+        async = true,
+        timeout = 1000,
       },
     })
-
-    vim.api.nvim_set_keymap("n", "<leader>f", "<cmd>Format<cr>", { noremap = true, silent = true })
-    vim.api.nvim_set_keymap("n", "<leader>Fm", "<cmd>FormatWrite<cr>", { noremap = true, silent = true })
-
-    -- vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-    -- 	command = "FormatWriteLock",
-    -- })
+    vim.keymap.set({ "n", "v" }, "<leader>mp", function()
+      require("conform").format({
+        lsp_fallback = true,
+        async = true,
+        timeout = 1000,
+      })
+    end, { desc = "Format file or range (in visual mode)" })
   end,
 }
