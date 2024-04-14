@@ -10,9 +10,17 @@ return {
         save_on_change = true,
       },
     })
-    vim.api.nvim_set_keymap("n", "<C-h>", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", { noremap = true })
-    vim.api.nvim_set_keymap("n", "<C-j>", "<cmd>lua require('harpoon.ui').nav_next()<cr>", { noremap = true })
-    vim.api.nvim_set_keymap("n", "<C-k>", "<cmd>lua require('harpoon.ui').nav_prev()<cr>", { noremap = true })
-    vim.api.nvim_set_keymap("n", "<C-a>", "<cmd>lua require('harpoon.mark').add_file()<cr>", { noremap = true })
+    vim.keymap.set("n", "<leader>hh", function()
+      require("harpoon.ui").toggle_quick_menu()
+    end, { noremap = true, desc = "[Harpoon] Toggle quick menu" }) -- Toggle quick menu
+    vim.keymap.set("n", "<leader>hf", function()
+      require("harpoon.mark").add_file()
+    end, { noremap = true, desc = "[Harpoon] Add file" }) -- Add file to harpoon
+    vim.keymap.set("n", "<leader>hj", function()
+      require("harpoon.ui").nav_next()
+    end, { noremap = true, desc = "[Harpoon] Next" }) -- Next file
+    vim.keymap.set("n", "<leader>hk", function()
+      require("harpoon.ui").nav_prev()
+    end, { noremap = true, desc = "[Harpoon] Previous" }) -- Previous file
   end,
 }

@@ -1,95 +1,6 @@
-local opts = { noremap = true, silent = true }
-
-local term_opts = { silent = true }
-
--- Shorten function name
-local keymap = vim.api.nvim_set_keymap
-
---Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
--- vim.o.guicursor = "i:block"
-
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
-
--- Make line numbers default
-vim.opt.number = true
-vim.opt.relativenumber = true
-
--- Enable mouse mode
-vim.opt.mouse = "a"
-
--- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
-vim.opt.clipboard = "unnamedplus"
-
--- Enable break indent
-vim.opt.breakindent = true
-
--- Save undo history
-vim.opt.undofile = true
-
--- Case insensitive searching UNLESS /C or capital in search
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-
--- Keep signcolumn on by default
-vim.opt.signcolumn = "yes"
-
--- Decrease update time
-vim.opt.updatetime = 50
-vim.opt.timeout = true
-vim.opt.timeoutlen = 300
-
--- Set completeopt to have a better completion experience
-vim.opt.completeopt = "menuone,noselect"
-
--- NOTE: You should make sure your terminal supports this
-vim.opt.termguicolors = true
+require("settings")
 
 vim.cmd("filetype plugin indent on")
-vim.o.shortmess = vim.o.shortmess .. "c"
--- vim.opt.hidden = true
-vim.opt.whichwrap = "b,s,<,>,[,],h,l"
-vim.opt.pumheight = 10
-vim.opt.fileencoding = "utf-8"
-vim.opt.cmdheight = 2
-vim.opt.splitbelow = true
-vim.opt.splitright = true
-vim.opt.conceallevel = 0
-vim.opt.showtabline = 0
-vim.opt.showmode = true
--- vim.o.showmode = false
-vim.opt.backup = false
-vim.opt.writebackup = false
-vim.opt.updatetime = 200
-vim.opt.timeoutlen = 500
-vim.opt.clipboard = "unnamedplus"
-vim.opt.ignorecase = true
-vim.opt.scrolloff = 3
-vim.opt.sidescrolloff = 5
-vim.opt.mouse = "a"
-
-vim.opt.tabstop = 4
-vim.bo.tabstop = 4
-vim.opt.softtabstop = 4
-vim.bo.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.bo.shiftwidth = 4
---
-vim.opt.wrap = false
-vim.opt.number = true
-vim.opt.cursorline = true
-vim.opt.signcolumn = "yes"
-
-vim.opt.autoindent = true
-vim.bo.autoindent = true
-vim.opt.expandtab = true
-vim.bo.expandtab = true
 
 vim.api.nvim_exec([[let &t_ut='']], true)
 
@@ -119,18 +30,9 @@ local disabled_built_ins = {
   "matchit",
 }
 
-vim.api.nvim_set_option_value("colorcolumn", "79", {})
-
 for _, plugin in pairs(disabled_built_ins) do
   vim.g["loaded_" .. plugin] = 1
 end
-
--- fold method, za to toggle
-vim.opt.fillchars:append({ fold = " " })
-vim.opt.foldmethod = "indent"
-vim.opt.foldenable = false
-vim.opt.foldlevel = 99
-vim.g.markdown_folding = 1 -- enable markdown folding
 
 if vim.g.vscode then
   -- lua config for vscode for nnoremap mode
@@ -203,10 +105,6 @@ else
     "i-ci:ver30-block-Cursor/lCursor-blinkwait700-blinkoff400-blinkon250",
   }, ",")
 
-  -- vim.opt.foldmethod = "expr"
-  -- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-  -- vim.opt.foldlevel = 99
-
   vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     pattern = { "*" },
     command = [[%s/\s\+$//e]],
@@ -239,11 +137,6 @@ else
   autocmd TermOpen * startinsert
   autocmd BufLeave term://* stopinsert
 ]])
-  -- autocmd BufWinLeave * mkview
-  -- autocmd BufWinEnter * silent! loadview
-  -- autocmd BufWinLeave,BufLeave,BufWritePost,BufHidden,QuitPre ?* nested silent! mkview!
-  -- autocmd BufWinEnter ?* silent! loadviewutocmd!
-  -- require("statusline")
 
   vim.cmd([[
   autocmd!
@@ -251,8 +144,6 @@ else
   au BufWinEnter ?* silent! loadview 1roup remember_folds
   augroup END
 ]])
-
-  require("lua.settings.remap")
 
   -- Install package manager
   --    https://github.com/folke/lazy.nvim
