@@ -1,6 +1,6 @@
-require("settings")
-
 vim.cmd("filetype plugin indent on")
+-- vim.opt.clipboard = "unnamedplus"
+require("settings.init")
 
 vim.api.nvim_exec([[let &t_ut='']], true)
 
