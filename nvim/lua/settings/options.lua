@@ -37,7 +37,7 @@ vim.opt.isfname:append("@-@")
 -- Decrease update time
 vim.opt.updatetime = 250
 -- vim.opt.timeout = true
-vim.opt.timeoutlen = 100
+vim.opt.timeoutlen = 300
 
 vim.opt.colorcolumn = "80"
 

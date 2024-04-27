@@ -15,6 +15,7 @@ return {
             ".git/",
             "node_modules/",
             "vendor/",
+            ".next/",
           },
           mappings = {
             i = {
