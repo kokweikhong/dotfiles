@@ -1,14 +1,29 @@
 return {
-  'nvim-treesitter/nvim-treesitter',
+  "nvim-treesitter/nvim-treesitter",
   dependencies = {
-    'nvim-treesitter/nvim-treesitter-textobjects',
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    "vrischmann/tree-sitter-templ",
   },
   config = function()
-    pcall(require('nvim-treesitter.install').update { with_sync = true })
-    require 'nvim-treesitter.configs'.setup {
+    -- vim.filetype.add({ extension = { templ = "templ" } })
+    pcall(require("nvim-treesitter.install").update({ with_sync = true }))
+    require("nvim-treesitter.configs").setup({
       -- A list of parser names, or "all"
-      ensure_installed = { "vim", "tsx", "lua", "go", "python", "javascript", "html", "css", "typescript", "scss", "css",
-        "json" },
+      ensure_installed = {
+        "vim",
+        "tsx",
+        "lua",
+        "go",
+        "python",
+        "javascript",
+        "html",
+        "css",
+        "typescript",
+        "scss",
+        "css",
+        "json",
+        -- "templ",
+      },
 
       -- Install parsers synchronously (only applied to `ensure_installed`)
       sync_install = true,
@@ -45,6 +60,6 @@ return {
         -- Instead of true it can also be a list of languages
         additional_vim_regex_highlighting = false,
       },
-    }
+    })
   end,
 }

@@ -7,11 +7,16 @@ function ColorMyPencils(color)
 end
 
 return {
-  "rose-pine/neovim",
-  name = "rose-pine",
+  "folke/tokyonight.nvim",
+  lazy = false,
+  priority = 1000,
+  opts = {},
+  -- "rose-pine/neovim",
+  -- name = "rose-pine",
   config = function()
-    require("rose-pine").setup()
-    vim.cmd("colorscheme rose-pine")
-    ColorMyPencils()
+    require("tokyonight").setup()
+
+    vim.cmd("colorscheme tokyonight-night")
+    -- ColorMyPencils()
   end,
 }

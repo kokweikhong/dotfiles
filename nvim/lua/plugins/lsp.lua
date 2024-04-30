@@ -8,6 +8,7 @@ local servers = {
   "cssls",
   "jsonls",
   "emmet_ls",
+  "templ",
 }
 
 return {
@@ -50,6 +51,26 @@ return {
         capabilities = capabilities,
       })
     end
+
+    lspconfig.tailwindcss.setup({
+      -- on_attach = on_attach,
+      capabilities = capabilities,
+      filetypes = { "templ", "astro", "javascript", "typescript", "react" },
+      init_options = { userLanguages = { templ = "html" } },
+    })
+
+    lspconfig.html.setup({
+      -- on_attach = on_attach,
+      capabilities = capabilities,
+      filetypes = { "html", "templ" },
+    })
+
+    -- lspconfig.HTMX.setup({
+    --   -- on_attach = on_attach,
+    --   capabilities = capabilities,
+    --   filetypes = { "html", "templ" },
+    -- })
+
     lspconfig.lua_ls.setup({
       settings = {
         Lua = {
