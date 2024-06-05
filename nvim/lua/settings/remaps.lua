@@ -11,6 +11,10 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
+-- next buffers
+vim.keymap.set("n", "<C-l>", "<cmd>bn<CR>")
+vim.keymap.set("n", "<C-h>", "<cmd>bp<CR>")
+
 -- vim.keymap.set("n", "<leader>vwm", function()
 --   require("vim-with-me").StartVimWithMe()
 -- end)

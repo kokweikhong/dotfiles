@@ -7,16 +7,19 @@ function ColorMyPencils(color)
 end
 
 return {
-  "folke/tokyonight.nvim",
-  lazy = false,
+  -- "folke/tokyonight.nvim",
+  -- lazy = false,
+  -- priority = 1000,
+  -- opts = {},
+  "catppuccin/nvim",
+  name = "catppuccin",
   priority = 1000,
-  opts = {},
-  -- "rose-pine/neovim",
-  -- name = "rose-pine",
   config = function()
-    require("tokyonight").setup()
+    -- require("tokyonight").setup()
+    require("catppuccin").setup()
 
-    vim.cmd("colorscheme tokyonight-night")
+    -- catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
+    vim.cmd("colorscheme catppuccin-macchiato")
     -- ColorMyPencils()
   end,
 }
