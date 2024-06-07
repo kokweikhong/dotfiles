@@ -105,9 +105,21 @@ else
     "i-ci:ver30-block-Cursor/lCursor-blinkwait700-blinkoff400-blinkon250",
   }, ",")
 
+  -- vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  --   pattern = { "*" },
+  --   command = [[%s/\s\+$//e]],
+  -- })
+
   vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     pattern = { "*" },
-    command = [[%s/\s\+$//e]],
+    callback = function(args)
+      local save_cursor = vim.fn.getpos(".")
+      pcall(function()
+        vim.cmd([[%s/\s\+$//e]])
+        require("conform").format({ bufnr = args.bufnr })
+      end)
+      vim.fn.setpos(".", save_cursor)
+    end,
   })
 
   vim.api.nvim_create_autocmd({ "BufEnter" }, {
