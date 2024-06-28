@@ -6,13 +6,18 @@ return {
     "MunifTanjim/nui.nvim",
   },
   keys = {
-    { "<F2>", "<cmd>:Neotree toggle<CR>" }
+    { "<F2>", "<cmd>:Neotree reveal toggle<CR>" },
   },
   config = function()
     require("neo-tree").setup({
       -- window = {
       --   position = "float",
       -- },
+      buffer = {
+        follow_current_file = {
+          enabled = true,
+        },
+      },
       default_component_configs = {
         icon = {
           folder_closed = "+",
@@ -26,17 +31,17 @@ return {
         git_status = {
           symbols = {
             -- Change type
-            added     = "+", -- or "✚", but this is redundant info if you use git_status_colors on the name
-            modified  = "m", -- or "", but this is redundant info if you use git_status_colors on the name
-            deleted   = "✖", -- this can only be used in the git_status source
-            renamed   = "", -- this can only be used in the git_status source
+            added = "+", -- or "✚", but this is redundant info if you use git_status_colors on the name
+            modified = "m", -- or "", but this is redundant info if you use git_status_colors on the name
+            deleted = "✖", -- this can only be used in the git_status source
+            renamed = "", -- this can only be used in the git_status source
             -- Status type
             untracked = "",
-            ignored   = "i",
-            unstaged  = "u",
-            staged    = "s",
-            conflict  = "c",
-          }
+            ignored = "i",
+            unstaged = "u",
+            staged = "s",
+            conflict = "c",
+          },
         },
       },
       filesystem = {
@@ -49,5 +54,5 @@ return {
       },
     })
     vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
-  end
+  end,
 }
