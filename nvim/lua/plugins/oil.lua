@@ -13,6 +13,7 @@ return {
     })
 
     vim.api.nvim_set_keymap("n", "<leader>oo", '<cmd>lua require("oil").open()<CR>', { noremap = true, silent = true })
+    vim.api.nvim_set_keymap("n", "<F2>", '<cmd>lua require("oil").open()<CR>', { noremap = true, silent = true })
     vim.api.nvim_set_keymap(
       "n",
       "<leader>of",
