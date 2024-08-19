@@ -36,8 +36,8 @@ return {
         "stylua",
         "isort",
         "black",
-        -- "eslint_d",
         "goimports",
+        "eslint_d",
       },
     })
 

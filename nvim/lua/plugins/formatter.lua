@@ -18,11 +18,11 @@ return {
         yaml = { "prettierd" },
         markdown = { "prettierd" },
       },
-      format_on_save = {
-        lsp_fallback = true,
-        async = true,
-        timeout = 1000,
-      },
+      -- format_on_save = {
+      --   lsp_fallback = true,
+      --   async = true,
+      --   timeout_ms = 1000,
+      -- },
       format_after_save = {
         lsp_fallback = true,
       },
@@ -31,7 +31,7 @@ return {
       require("conform").format({
         lsp_fallback = true,
         async = true,
-        timeout = 1000,
+        timeout_ms = 1000,
       })
     end, { desc = "Format file or range (in visual mode)" })
   end,
