@@ -3,6 +3,7 @@ local servers = {
   "gopls",
   "pyright",
   "tailwindcss",
+  -- "ts_ls",
   "tsserver",
   "html",
   "cssls",
@@ -30,6 +31,25 @@ return {
       ensure_installed = servers,
     })
 
+    require("mason-lspconfig").setup()
+
+    require("mason-lspconfig").setup_handlers({
+      -- Will be called for each installed server that doesn't have
+      -- a dedicated handler.
+      --
+      function(server_name) -- default handler (optional)
+        -- https://github.com/neovim/nvim-lspconfig/pull/3232
+        if server_name == "tsserver" then
+          server_name = "ts_ls"
+        end
+        local capabilities = require("cmp_nvim_lsp").default_capabilities()
+        require("lspconfig")[server_name].setup({
+
+          capabilities = capabilities,
+        })
+      end,
+    })
+
     require("mason-tool-installer").setup({
       ensure_installed = {
         "prettierd",
@@ -45,12 +65,12 @@ return {
 
     local lspconfig = require("lspconfig")
 
-    for _, lsp in ipairs(servers) do
-      lspconfig[lsp].setup({
-        -- on_attach = my_custom_on_attach,
-        capabilities = capabilities,
-      })
-    end
+    -- for _, lsp in ipairs(servers) do
+    --   lspconfig[lsp].setup({
+    --     -- on_attach = my_custom_on_attach,
+    --     capabilities = capabilities,
+    --   })
+    -- end
 
     lspconfig.tailwindcss.setup({
       -- on_attach = on_attach,
