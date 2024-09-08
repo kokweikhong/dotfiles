@@ -18,13 +18,9 @@ return {
         yaml = { "prettierd" },
         markdown = { "prettierd" },
       },
-      -- format_on_save = {
-      --   lsp_fallback = true,
-      --   async = true,
-      --   timeout_ms = 1000,
-      -- },
-      format_after_save = {
-        lsp_fallback = true,
+      format_on_save = {
+        timeout_ms = 500,
+        lsp_format = "fallback",
       },
     })
     vim.keymap.set({ "n", "v" }, "<leader>mp", function()
